@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Categoria, MateriaPrima
+from .models import Fornecedor, Categoria, MateriaPrima
+
+@admin.register(Fornecedor)
+class FornecedorAdmin(admin.ModelAdmin):
+    list_display = ('id', 'nome', 'contato', 'telefone', 'email')
+    search_fields = ('nome',)
 
 @admin.register(Categoria)
 class CategoriaAdmin(admin.ModelAdmin):

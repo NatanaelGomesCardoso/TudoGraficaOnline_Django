@@ -6,10 +6,9 @@ SECRET_KEY = 'django-insecure-uma-chave-temporaria-que-pode-mudar-depois'
 DEBUG = True
 ALLOWED_HOSTS = []
 
-# DEFINIÇÃO DAS APPS - A FORMA CORRETA E MODERNA
+# DEFINIÇÃO DAS APPS - AGORA COM A NOSSA APP INVENTORY
 INSTALLED_APPS = [
-    'suppliers.apps.SuppliersConfig',
-    'products.apps.ProductsConfig',
+    'inventory.apps.InventoryConfig', # A nossa nova app unificada
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -29,11 +28,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'core.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -45,33 +43,23 @@ TEMPLATES = [
         },
     },
 ]
-
 WSGI_APPLICATION = 'core.wsgi.application'
-
-# BANCO DE DADOS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-# VALIDAÇÃO DE SENHAS
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
     {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
 ]
-
-# INTERNACIONALIZAÇÃO
 LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 USE_TZ = True
-
-# FICHEIROS ESTÁTICOS (CSS, JS, IMAGENS)
 STATIC_URL = 'static/'
-
-# TIPO DE CAMPO DE CHAVE PRIMÁRIA PADRÃO
+STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
